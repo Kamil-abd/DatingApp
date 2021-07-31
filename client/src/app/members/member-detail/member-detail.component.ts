@@ -38,6 +38,16 @@ export class MemberDetailComponent implements OnInit {
     ];
   }
 
+
+  loadMember() {
+    this.memberService
+      .getMember(this.route.snapshot.paramMap.get('username'))
+      .subscribe((member) => {
+        this.member = member;
+        this.galleryImages = this.getImages();
+      });
+  }
+  
   getImages(): NgxGalleryImage[] {
     const imageUrls = [];
     for (const photo of this.member.photos) {
@@ -48,14 +58,5 @@ export class MemberDetailComponent implements OnInit {
       });
     }
     return imageUrls;
-  }
-
-  loadMember() {
-    this.memberService
-      .getMember(this.route.snapshot.paramMap.get('username'))
-      .subscribe((member) => {
-        this.member = member;
-        this.galleryImages = this.getImages();
-      });
   }
 }
