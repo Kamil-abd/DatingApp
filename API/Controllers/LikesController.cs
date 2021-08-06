@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     [Authorize]
-    public class LikesController : BaseApiConroller
+    public class LikesController : BaseApiController
     {
         private readonly IUserRepository _userRepository;
         private readonly ILikesRepository _likesRepository;
